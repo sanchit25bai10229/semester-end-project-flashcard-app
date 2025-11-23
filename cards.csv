@@ -1,0 +1,9 @@
+Question,Answer
+In Python, what keyword is used to define a function?,def
+What data structure is represented by curly braces {} and contains key-value pairs?,Dictionary
+What is the file extension for a Python script?,.py
+What method is called when an object is first created from a class?,init
+What keyword is used to import a library or module?,import
+What data structure stores an ordered, immutable collection of items?,Tuple
+What function is used to get user input from the console?,input()
+What library would you use for numerical operations and arrays?,NumPy

@@ -1,0 +1,75 @@
+Project Report: Flashcard Tutor
+
+1. Introduction and Project Goal
+
+The Flashcard Tutor project aimed to develop a functional, interactive, and highly customizable desktop application for self-quizzing and memory reinforcement. The primary goal was to create a data-driven tool using Python's standard library (tkinter for GUI) that allows users to load any subject material from a simple CSV file and track their progress through a simulated spaced repetition cycle.
+
+2. Technical Architecture and Design
+
+The application adheres to strong Object-Oriented Design (OOD) principles, structuring the program logic around three key classes:
+
+2.1. Model Classes (Data and State Management)
+
+Class
+
+Responsibility
+
+Key Attributes
+
+Flashcard
+
+Stores the immutable content of a single card and tracks its state.
+
+question, answer, is_known (boolean)
+
+quizdeck
+
+Acts as the central data store, managing the collection of Flashcard objects.
+
+cards (list of Flashcard objects)
+
+The quizdeck class is responsible for file I/O (loading data from cards.csv) and data manipulation (shuffling the deck), isolating data logic from the presentation layer.
+
+2.2. Controller/View Class (GUI and Flow)
+
+Class
+
+Responsibility
+
+Key Attributes
+
+F_App
+
+Manages the Tkinter GUI components, handles user interaction (clicks and keys), updates state, and controls the flow of the quiz.
+
+master (Tk root), deck, current_card_index, known_count
+
+This separation ensures that data structure and GUI elements can be modified independently.
+
+3. Implementation Details
+
+3.1. CSV Data Handling and Error Management
+
+The quizdeck.load_from_csv method implements essential checks to ensure application stability:
+
+File Validation: Catches FileNotFoundError and prompts the user via a messagebox.
+
+Header Parsing: Dynamically finds the indices of the Question and Answer columns, making the column order flexible.
+
+Data Integrity: Skips malformed rows and ensures both question and answer fields are non-empty before creating a Flashcard object.
+
+3.2. User Interface (Tkinter)
+
+The interface utilizes a dark color scheme (#1e1e1e background, #2c3e50 card frame) for a modern, focused study environment.
+
+Status Tracking: The status_label is updated in real-time by F_App.update_status(), displaying the current card number and the cumulative score of known cards.
+
+State Control: The F_App.enable_evaluation_buttons() method is critical. It ensures that the "I KNEW IT" and "I MISSED IT" buttons are disabled until the user has clicked "REVEAL ANSWER", enforcing the required review sequence.
+
+3.3. Keyboard Bindings
+
+Efficiency was improved by implementing keyboard shortcuts, binding the main Tk root window to the <Key> event. This allows users to press 'R', 'Y', or 'N' to advance through the quiz without relying solely on the mouse.
+
+4. Conclusion
+
+The Flashcard Tutor successfully meets all stated project goals. It is a reliable, standalone Python application that effectively demonstrates proficiency in Object-Oriented Programming, GUI development with tkinter, robust file input/output, and the implementation of a simple state machine to manage the quiz flow. The project is highly modular and easily maintained due to its clear separation of data and presentation logic.
